@@ -12,6 +12,7 @@ public class Ball {
 	private double energyloss = 1;  //private znaèi da samo ball može imati pristup ovim varijablama
 	private double dt = .2;
 	private double xFriction = .9;
+	private double gameDy= - 75;
 	
 	//metoda koja nam updata fiziku, dobivamo grešku nakon kopiranja tada upisujemo startingpoint u našu metodu 
 	// tada mjenjamo našu metodu "this" u "sp", najbolje sa find replace alatom
@@ -28,6 +29,16 @@ public class Ball {
 		x = i;
 		y = j; //dodavanje vrijednosti kako lopta ne bi krenula sa istog položaja
 	}
+	
+	public double getGameDy() {
+		return gameDy;
+	}
+	
+	public void setGameDy(double gameDy) {
+		this.gameDy = gameDy;
+	}
+	
+	
 	
 	//dodajemo metode kako bi imali poziciciju parametara u bilo kojem momentu ctrl space
 	
@@ -132,7 +143,7 @@ public class Ball {
 		if (y > sp.getHeight() - radius -1) {
 			y = sp.getHeight() - radius -1;
 			dy *= energyloss; // usporavanje radi gravitacije
-			dy = -dy;	
+			dy = gameDy;	
 		}	else {
 			//formula za brzinu
 			dy += gravity*dt;

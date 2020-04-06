@@ -16,6 +16,15 @@ public class Platform {
 		y = 300;
 		width = 120;
 		height = 40;
+	}
+		
+	public Platform (int x,int y){
+			this.x = x;
+			this.y = y;
+			width = 120;
+			height = 40;
+			dx = -10;
+			
 		
 	}
 	
@@ -34,8 +43,10 @@ public void update(StartingPoint sp, Ball b) {
 		
 		if (bally + radius > y && bally + radius < y + height) {
 			if (ballx > x && ballx < x + width) {
-				double newDY = b.getDy()* -1;
-			b.setDy(newDY);
+				
+				double newDY = b.getGameDy();
+				b.setY(	y-radius);
+			     b.setDy(newDY);
 		}
 		
 		

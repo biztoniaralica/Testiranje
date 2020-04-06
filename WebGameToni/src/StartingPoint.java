@@ -16,7 +16,8 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 	private Graphics doubleG;
 	Ball b;
 
-	Platform p;
+	Platform p,p2,p3;
+
 	
 	
 	// INIT METODA INICIJALIZACIJE (inicijalizira ekran od 800 600)
@@ -35,7 +36,9 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 		
 		b = new Ball();
 		 
-		p = new Platform(); //platforma 
+		p = new Platform();//platforma 
+		p2= new Platform(100, 425);
+		p3= new Platform(500, 200);
 		
 		Thread thread = new Thread(this);
 		thread.start(); 
@@ -74,7 +77,8 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 			b.update(this);
 		
 			p.update(this, b); //stavili smo b jer pri updateu kontroliramo loptu b
-			
+			p2.update(this, b);
+			p3.update(this, b);
 			repaint();
 			try {
 				Thread.sleep(17);
@@ -106,6 +110,8 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 		b.paint(g);
 		
 		p.paint(g);
+		p2.paint(g);
+		p3.paint(g);
 	
 		
 	}
